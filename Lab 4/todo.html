@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Al Amin - Pro ToDo List</title>
+    <link rel="stylesheet" href="todo-style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>My Interactive "Pro" To-Do List</h1>
+        
+        <form id="task-form">
+            <input type="text" id="task-input" placeholder="What do you need to do?" autocomplete="off">
+            <button type_ ="submit" id="add-task-btn">Add Task</button>
+        </form>
+        
+        <div class="controls">
+            <div class="filter-buttons">
+                <strong>Filter:</strong>
+                <button data-filter="all" class="active">All</button>
+                <button data-filter="incomplete">Incomplete</button>
+                <button data-filter="completed">Completed</button>
+            </div>
+            <div class="sort-buttons">
+                <strong>Sort:</strong>
+                <button data-sort="creation">By Time</button>
+                <button data-sort="alpha">Alphabetically</button>
+            </div>
+        </div>
+        
+        <ul id="task-list">
+            </ul>
+    </div>
+
+    <script src="todo-script.js"></script>
+</body>
+</html>

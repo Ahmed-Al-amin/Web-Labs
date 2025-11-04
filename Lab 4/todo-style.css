@@ -1,0 +1,216 @@
+/* --- Basic Setup --- */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 50px;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Form --- */
+#task-form {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#task-input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    font-size: 1em;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    transition: border-color 0.2s;
+}
+
+#task-input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+#add-task-btn {
+    padding: 12px 20px;
+    font-size: 1em;
+    font-weight: 600;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#add-task-btn:hover {
+    background-color: #0056b3;
+}
+
+/* --- Controls (Filter/Sort) --- */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 15px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.controls strong {
+    margin-right: 5px;
+}
+
+.controls button {
+    padding: 5px 10px;
+    font-size: 0.9em;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.controls button:hover {
+    background-color: #e0e0e0;
+}
+
+.controls button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+/* --- Task List --- */
+#task-list {
+    list-style: none; /* This will remove the black bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+/* Individual Task Item */
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #fff;
+    border-bottom: 1px solid #f0f0f0;
+
+    /* 1. START HIDDEN */
+    opacity: 0;
+    transform: translateY(-10px);
+
+    /* 2. DEFINE THE TRANSITION */
+    transition: background-color 0.3s, opacity 0.3s, transform 0.3s;
+}
+
+/* 3. THE "VISIBLE" STATE WE ADD WITH JS */
+.task-item-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.task-item-exit {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.task-item:last-child {
+    border-bottom: none;
+}
+
+/* Task Content (This is the important part for spacing) */
+.task-content {
+    flex-grow: 1; /* This pushes the edit/delete buttons to the right */
+    margin: 0 10px; /* This adds space between the check and edit buttons */
+    display: flex;
+    flex-direction: column; /* This stacks the text ON TOP of the timestamp */
+}
+
+.task-text {
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: color 0.3s;
+    position: relative; 
+}
+
+.task-timestamp {
+    font-size: 0.8em;
+    color: #999;
+    margin-top: 3px;
+}
+
+/* Completed Task Styling */
+.task-item.completed .task-text {
+    color: #888;
+}
+.task-item.completed .task-text::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background: #888;
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 0.3s ease-out;
+}
+.task-text::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background: #888;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-out;
+}
+
+
+/* --- Icon Buttons --- */
+.task-btn {
+    font-size: 1.2em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.task-btn:hover {
+    transform: scale(1.2);
+}
+
+.toggle-btn {
+    color: #28a745; /* Green */
+}
+.task-item.completed .toggle-btn {
+    color: #ffc107; /* Yellow for "un-check" */
+}
+
+.edit-btn {
+    color: #007bff; /* Blue */
+}
+
+.delete-btn {
+    color: #dc3545; /* Red */
+}

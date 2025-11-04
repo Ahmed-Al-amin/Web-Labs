@@ -1,0 +1,144 @@
+/* Basic Setup */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+/* The Resume "Page" */
+.resume {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Header & Contact Info --- */
+header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    margin-bottom: 30px;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    object-fit: cover;
+    border: 3px solid #eee;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #2c3e50;
+    margin: 0 0 10px 0;
+}
+
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 20px;
+    font-size: 0.95em;
+    color: #555;
+}
+
+.contact-info span {
+    display: inline-block;
+}
+
+.contact-info a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* --- General Section Styling --- */
+section {
+    margin-bottom: 25px;
+}
+
+section h2 {
+    font-size: 1.6em;
+    color: #005a9c; /* Professional blue */
+    border-bottom: 2px solid #005a9c;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+/* --- Date Styling (for float) --- */
+.date {
+    float: right;
+    font-style: italic;
+    color: #666;
+    font-weight: bold;
+}
+
+/* --- Specific Sections --- */
+#objective p {
+    font-size: 1.1em;
+    font-style: italic;
+    text-align: center;
+}
+
+#education .edu-item {
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 5px;
+    /* Clear the float for dates */
+    clear: right;
+}
+
+h3 + p, h3 + ul {
+    margin-top: 5px;
+}
+
+article {
+    margin-bottom: 20px;
+    /* Ensure article content stays below the floated date */
+    overflow: hidden;
+}
+
+/* --- Lists (used for skills, certs, and project features) --- */
+ul {
+    padding-left: 20px;
+    list-style-type: disc;
+    margin-top: 5px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+#skills li {
+    margin-bottom: 10px;
+}
+
+#skills strong {
+    color: #2c3e50;
+}
+
+#projects article {
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 15px;
+}
+
+#projects article:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
