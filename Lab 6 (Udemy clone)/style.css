@@ -1,0 +1,660 @@
+/* --- 1. Variables & Theme Setup --- */
+:root {
+    --primary-text: #2d2f31;
+    --secondary-text: #6a6f73;
+    --purple: #a435f0;
+    --purple-hover: #8710d8;
+    --bg-color: #ffffff;
+    --bg-gray: #f7f9fa;
+    --border-color: #d1d7dc;
+    --white: #ffffff;
+    --black: #1c1d1f;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-hover: 0 2px 8px 2px rgba(0, 0, 0, 0.08);
+}
+
+.dark-mode {
+    --primary-text: #f7f9fa;
+    --secondary-text: #d1d7dc;
+    --bg-color: #1c1d1f;
+    --bg-gray: #2d2f31;
+    --border-color: #3e4143;
+    --white: #1c1d1f;
+    --black: #ffffff;
+    /* Soft white glow for shadows in dark mode */
+    --shadow-sm: 0 2px 4px rgba(255,255,255,0.05); 
+    --shadow-hover: 0 2px 8px 2px rgba(255, 255, 255, 0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'udemy sans', -apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--primary-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- 2. Navbar Styling --- */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 72px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    background-color: var(--bg-color);
+    position: relative;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo Switching Logic */
+.logo-img {
+    height: 34px;
+    display: block;
+}
+
+.light-mode-logo { display: block; }
+.dark-mode-logo { display: none; }
+
+.dark-mode .light-mode-logo { display: none; }
+.dark-mode .dark-mode-logo { display: block; }
+
+.nav-link {
+    text-decoration: none;
+    color: var(--primary-text);
+    margin: 0 12px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.nav-link:hover {
+    color: var(--purple);
+}
+
+/* Search Bar */
+.nav-center {
+    flex-grow: 1;
+    padding: 0 24px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-gray);
+    border: 1px solid var(--black);
+    border-radius: 9999px;
+    padding: 0 16px;
+    height: 48px;
+}
+
+.search-icon {
+    font-size: 20px;
+    color: var(--secondary-text);
+    margin-right: 12px;
+    /* Fix for unicode vertical alignment */
+    display: flex; 
+    align-items: center;
+}
+
+.search-input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--primary-text);
+    font-size: 14px;
+}
+
+/* Nav Buttons & Icons */
+.nav-icon {
+    font-size: 24px;
+    text-decoration: none;
+    color: var(--primary-text);
+    margin: 0 16px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-icon:hover {
+    color: var(--purple);
+}
+
+.btn {
+    font-weight: 700;
+    padding: 0 12px;
+    height: 40px;
+    border: 1px solid var(--black);
+    cursor: pointer;
+    margin-left: 8px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.btn-white {
+    background-color: var(--bg-color);
+    color: var(--primary-text);
+}
+.btn-white:hover {
+    background-color: var(--bg-gray);
+}
+
+.btn-black {
+    background-color: var(--black);
+    color: var(--bg-color);
+    border-color: var(--black);
+}
+.btn-black:hover {
+    opacity: 0.9;
+}
+
+.btn-icon {
+    border: none;
+    background: transparent;
+    padding: 8px;
+    font-size: 24px;
+    color: var(--primary-text);
+}
+.btn-icon:hover {
+    background-color: var(--bg-gray);
+    border-radius: 50%;
+}
+
+/* --- 3. Hero Section --- */
+.hero {
+    position: relative;
+    height: 400px;
+    margin-bottom: 32px;
+    overflow: hidden;
+}
+
+.hero-image-container {
+    width: 100%;
+    height: 100%;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Center the focal point of the image */
+    object-position: center 20%; 
+}
+
+.hero-card {
+    position: absolute;
+    top: 64px;
+    left: 48px;
+    background-color: var(--bg-color);
+    padding: 24px;
+    max-width: 440px;
+    box-shadow: var(--shadow-sm);
+}
+
+.hero-card h1 {
+    font-size: 32px;
+    margin-bottom: 16px;
+    font-family: serif; /* Serif font for headings like Udemy */
+    font-weight: 700;
+}
+
+.hero-card p {
+    font-size: 16px;
+    margin-bottom: 16px;
+    line-height: 1.4;
+}
+
+.big-btn {
+    height: 48px;
+    font-size: 16px;
+    width: auto;
+    padding: 0 20px;
+}
+
+/* --- 4. Layout & Sections --- */
+.container {
+    max-width: 1340px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section-padding {
+    padding: 40px 0;
+}
+
+.gray-bg {
+    background-color: var(--bg-gray);
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: var(--primary-text);
+    margin-bottom: 32px;
+    max-width: 800px;
+}
+
+/* --- 5. Skills Section --- */
+.carousel-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-btn {
+    background: rgba(0,0,0,0.06);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.12s ease, background 0.12s ease;
+}
+.nav-btn:hover { transform: translateY(-2px); background: rgba(0,0,0,0.09); }
+
+.skills-carousel {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 16px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar cross-browser */
+.skills-carousel::-webkit-scrollbar { display: none; height: 0; }
+.skills-carousel { scrollbar-width: none; }
+
+.skill-card {
+    min-width: 280px;
+    background-color: var(--bg-color);
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-weight: 700;
+    color: var(--primary-text);
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.skill-thumb {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: white;
+    flex: 0 0 64px;
+}
+
+/* Gradient color placeholders to mimic the video visuals */
+.color-1 { background: linear-gradient(135deg,#ff8a65,#ff5252); }
+.color-2 { background: linear-gradient(135deg,#7c4dff,#536dfe); }
+.color-3 { background: linear-gradient(135deg,#00bfa5,#00e676); }
+.color-4 { background: linear-gradient(135deg,#ffb74d,#ff8a65); }
+.color-5 { background: linear-gradient(135deg,#42a5f5,#7e57c2); }
+
+.skill-info h3 { margin: 0 0 6px 0; font-size: 16px; }
+.skill-info p { margin: 0; color: var(--secondary-text); font-size: 0.95rem; font-weight: 600; }
+
+/* --- Image-backed card style to mimic Udemy dashboard --- */
+.skill-card {
+    min-width: 360px;
+    height: 360px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    flex: 0 0 auto;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 6px 18px rgba(18,20,22,0.06);
+}
+
+.card-media {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.skill-card .card-overlay {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    background: var(--bg-color);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.overlay-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.learners-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.04);
+    color: var(--secondary-text);
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.overlay-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--primary-text);
+}
+
+.overlay-arrow {
+    font-size: 20px;
+    color: var(--secondary-text);
+}
+
+/* Dots below carousel */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 18px;
+}
+.carousel-dots button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0,0,0,0.12);
+    cursor: pointer;
+}
+.carousel-dots button.active {
+    background: var(--purple);
+    box-shadow: 0 4px 12px rgba(164,53,240,0.18);
+}
+
+/* --- 6. Courses Section --- */
+.tabs-container {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    overflow-x: auto;
+}
+
+.tab {
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--secondary-text);
+    cursor: pointer;
+    padding-bottom: 12px;
+    white-space: nowrap;
+}
+
+.tab.active {
+    color: var(--primary-text);
+    /* This creates the active black/white underline */
+    border-bottom: 2px solid var(--primary-text); 
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 32px;
+}
+
+.course-card {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    position: relative;
+    background-color: var(--bg-color);
+}
+
+.course-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border: 1px solid var(--border-color);
+    margin-bottom: 8px;
+    transition: filter 0.2s;
+}
+
+.course-card:hover .course-img {
+    filter: brightness(0.9);
+}
+
+.course-title {
+    font-weight: 700;
+    margin: 8px 0 4px;
+    line-height: 1.2;
+    font-size: 16px;
+    /* Truncate text after 2 lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.course-author {
+    font-size: 12px;
+    color: var(--secondary-text);
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.course-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #b4690e; /* Udemy gold color */
+    margin-bottom: 4px;
+}
+.course-rating span:nth-child(2) {
+    font-size: 12px; /* Make stars slightly smaller */
+}
+
+.course-price {
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+}
+
+.bestseller-badge {
+    background-color: #eceb98;
+    color: #3d3c0a;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 8px;
+    width: fit-content;
+    margin-top: 8px;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--black);
+    color: var(--primary-text);
+    width: 100%;
+    height: 48px;
+    font-weight: 700;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+
+.btn-outline:hover {
+    background-color: var(--bg-gray);
+}
+
+/* --- 7. Promo Section --- */
+.promo-section {
+    background-color: var(--bg-color);
+    border-top: 1px solid var(--border-color);
+    margin-top: 40px;
+}
+
+.promo-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.promo-text {
+    flex: 1;
+}
+
+.promo-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* --- 8. Partner Logos (Trusted By) --- */
+.centered {
+    text-align: center;
+}
+
+.trusted-text {
+    color: var(--secondary-text);
+    margin-bottom: 32px;
+    font-size: 14px;
+}
+
+.logos-grid {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.logos-grid img {
+    height: 38px;
+    width: auto;
+    /* Make logos gray */
+    filter: grayscale(100%);
+    opacity: 0.6;
+}
+
+/* Invert and keep logos visible in dark mode */
+.dark-mode .logos-grid img {
+    filter: invert(1) grayscale(100%);
+    opacity: 0.8;
+}
+
+/* --- 9. Footer --- */
+.footer {
+    background-color: #1c1d1f; /* Footer is always dark */
+    color: white;
+    padding: 32px 0;
+    font-size: 14px;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* --- 10. Responsive Design --- */
+@media (max-width: 768px) {
+    .desktop-only {
+        display: none;
+    }
+    
+    /* Show Hero Card below image on mobile */
+    .hero {
+        height: auto;
+    }
+    .hero-image-container {
+        height: 250px;
+    }
+    .hero-card {
+        position: static;
+        box-shadow: none;
+        margin-top: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .skills-carousel {
+        gap: 8px;
+    }
+    
+    .search-container {
+        display: none; /* Hide search on small screens for simplicity */
+    }
+    
+    .promo-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+    }
+    
+    .logos-grid {
+        gap: 24px;
+    }
+}
+
+/* --- Auth buttons: keep Log in and Sign up side-by-side --- */
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.auth-buttons .btn { margin-left: 0; }
